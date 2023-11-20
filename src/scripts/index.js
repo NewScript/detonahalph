@@ -8,24 +8,27 @@ const state = {
   },
   values:{
     timerId: null,
-    gameVelocity: 1000,
+    gameVelocity: 500,
     hitPosition: 0,
     result: 0,
-    currentTime: 60
+    time: 20,
+    currentTime: 20
   }
 };
 
 const countDown = () => {
   state.values.currentTime--;
   state.view.time.textContent = state.values.currentTime;
-  if(state.values.currentTime <= 0){
+  if(state.values.currentTime < 0){
     clearInterval(state.values.timerId);
     clearInterval(countDownTimerId);
     alert('Game over! Sua pontuação foi: ' + state.values.result);
-    state.values.currentTime = 60;
+    state.values.currentTime = state.values.time;
     state.view.time.textContent = state.values.currentTime;
     state.values.result = 0;
     state.view.score.textContent = 0;
+    moveEnemy();
+    countDownTimerId = setInterval(countDown, 1000);
   };
 }
 
