@@ -8,7 +8,7 @@ const state = {
   },
   values:{
     timerId: null,
-    gameVelocity: 500,
+    gameVelocity: 800,
     hitPosition: 0,
     result: 0,
     time: 20,
@@ -51,7 +51,7 @@ const randomWindow = ()=>{
 
 const addEventListenerHitBox = () => {
   state.view.window.forEach((window)=>{
-    window.addEventListener('mousedown', ()=>{
+    window.addEventListener('click', ()=>{
       if( window.id === state.values.hitPosition){
         state.values.result++;
         state.view.score.textContent = state.values.result;
